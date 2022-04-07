@@ -1,0 +1,83 @@
+.hotel-container{
+    .container{
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        .title-container{
+            display: flex;
+            flex-direction: column;
+            gap:1rem;
+            text-align: center;
+            h1{
+                color: var(--gold);
+
+            }
+            p{
+                color: var(--blue-petrol);
+                letter-spacing: 0.1rem;
+                line-height: 1.2rem;
+            }
+        }
+
+        h2{
+          color: var(--gold);
+          display: flex;
+          flex-direction: column;
+          gap:1rem;
+          text-align: center;
+        }
+        .content{
+            display: flex;
+            flex-direction: column;
+            gap:2rem;
+            .hotels{
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                .hotel {
+                    background-color: var(--card-color2);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                    gap: 1rem;
+                    padding: 1rem;
+                    border-radius: 0.7rem;
+                    box-shadow: var(--fixed-shadow);
+                    transition: var(--transition);
+                    &:hover{
+                        box-shadow: var(--elevater-shadow);
+                    }
+                    img{
+                        max-inline-size: 100%;
+                        block-size:auto;
+                    }
+                    h4{
+                        color: var(--gold);
+                    }
+                    p{
+                        color:var(--blue-petrol);
+                    }
+                }
+            }  
+        }
+    }
+    @media only screen and (min-device-width: 768px) {
+        .container {
+          .hotels {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+      }
+      @media screen and (min-device-width: 1200px) {
+        .container {
+          .content {
+            flex-direction: row-reverse;
+            gap: 4rem;
+            .hotels {
+              grid-template-columns: repeat(2, 1fr);
+            }
+          }
+        }
+      }
+}

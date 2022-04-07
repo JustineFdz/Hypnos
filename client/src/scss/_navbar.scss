@@ -1,0 +1,102 @@
+nav{
+    background-color: var(--blue-background);
+    transition: var(--transition);
+   .py-3{
+        padding: 2rem 0;
+    }
+
+    .container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .brand{
+            display: flex;
+            gap: 0.3rem;
+            span{
+                color: var(--gold);
+                font-size: 2rem;
+                font-family: 'Poppins', sans-serif;
+                //font-weight: 700;
+            }
+        }
+    }
+    .links-container {
+        .toggle {
+            display: flex;
+            gap:1rem;
+            flex-direction: row-reverse;
+            position: relative;
+            z-index: 1;
+            svg{
+                color :var(--svg-color);
+            }
+        }
+        .links{
+            width: 0vw;
+            position: fixed;
+            right: 0;
+            top: 0;
+            height:100vh;
+            background-color: var(--background);
+            visibility: hidden;
+            transition: var(--transition);
+            ul{
+                height: 100%;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                gap: 4rem;
+                li{
+                    a{
+                        text-decoration: none;
+                        color:var(--blue-petrol);
+                    }
+                }
+            }
+        }
+        .responsive-toggle{
+            width: 60vw;
+            visibility: visible;
+            opacity: 1;
+        }
+        .menu{
+          background-color: black;
+          .links{
+            background-color: var(--blue-petrol);
+          }
+          
+
+        }
+    }
+    @media only screen and (min-device-width: 1200px) {
+        background-color: var(--blue-background);
+        //margin: 2rem;
+        margin-top: 0;
+        .py-3 {
+          padding: 1rem 0;
+        }
+        .container {
+          .links-container {
+            .toggle {
+              display: none;
+            }
+            .links {
+              background-color: var(--blue-background);
+              position: initial;
+              height: max-content;
+              visibility: visible;
+              opacity: 1;
+              width: 100%;
+              ul {
+                height: 1rem;
+                flex-direction: row;
+                .color-mode {
+                  display: block;
+                }
+              }
+            }
+          }
+        }
+      }
+}
