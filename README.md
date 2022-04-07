@@ -1,2 +1,2 @@
 # hypnos
-ECF dans le cadre de la formation studi
+ECF dans le cadre de la formation studi developpeur web
