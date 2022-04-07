@@ -25,7 +25,7 @@ export default function Navbar() {
     <nav>
       <div className="container px-3 mx-3">
         <div className="brand">
-          <span>Hypnos</span>
+          <span>Hypnoss</span>
         </div>
         <div className="links-container" onClick = {(e)=>e.stopPropagation()}>
           <div className="toggle">
