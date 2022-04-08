@@ -1,6 +1,4 @@
-import './App.css';
 import { Routes, Route} from 'react-router-dom';
-
 import Navbar from './components/Navbar';
 import { Home } from './components/Home';
 import { Booking } from './components/Booking'
@@ -27,6 +25,8 @@ function App() {
         <Route path='signup' element={<SignUp/>} />
         <Route path='signin' element={<SignIn/>} />
         <Route path='chabichou' element={<Chabichou/>} />
+        {/* <Route path='sidebar' element={<DashSidebar/>} />
+        <Route path='dashboard' element={<Dashboard/>} /> */}
       </Routes>
       {/* </ThemeProvider> */}
     </>
