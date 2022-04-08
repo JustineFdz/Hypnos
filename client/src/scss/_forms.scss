@@ -114,8 +114,8 @@ button {
 }
 
 @media only screen and (min-device-width: 768px) {
-  .authentication-container {
-    .authentication {
+  .allForms-container {
+    .allForms {
       display: flex;
       flex-direction: column;
       width: 50vw;
@@ -126,8 +126,8 @@ button {
 }
 
 @media screen and (min-device-width: 1200px) {
-  .authentication-container {
-    .authentication {
+  .allForms-container {
+    .allForms {
       display: flex;
       flex-direction: column;
       width: 50vw;
