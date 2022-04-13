@@ -40,8 +40,8 @@ export default function SignUp() {
   const [success, setSuccess] = useState(false);
 
 
-  const register = () => {
-    axios.post('https://hypnos-app.herokuapp.com/signup', {
+  const signup = () => {
+    axios.post('http://hypnos-app.herokuapp.com/signup', {
       name: name, 
       surname: surname,
       mail:mail,
@@ -237,7 +237,7 @@ return (
                         Doit correspondre au premier champ de saisie du mot de passe.
                     </p>
 
-                    <button disabled={!validMail || !validPwd || !validMatch ? true : false} onClick={register}>Inscription</button>
+                    <button disabled={!validMail || !validPwd || !validMatch ? true : false} onClick={signup}>Inscription</button>
                 </form>
                 <p>
                     Déjà inscrit?<br />

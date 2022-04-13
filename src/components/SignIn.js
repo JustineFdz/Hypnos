@@ -5,8 +5,6 @@ import {faInfoCircle, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 
-
-const USER_REGEX = /^[a-zA-Z]/;
 const MAIL_REGEX = /^[a-zA-Z0-9.]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const REGISTER_URL = '/register';
@@ -28,8 +26,8 @@ export default function SignIn() {
 
   const [loginStatus, setLoginStatus] = useState('');
 
-  const login = () => {
-    axios.post('https://hypnos-app.herokuapp.com/signin', {
+  const signin = () => {
+    axios.post('http://hypnos-app.herokuapp.com/signin', {
       mail: mailSignIn, 
       password:pwdSignIn
     }).then((response) => {
@@ -155,7 +153,7 @@ return (
                         Caractères spéciaux autorisés : <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
                     </p> */}
 
-                    <button disabled={!validMailSignIn || !validPwdSignIn ? true : false} onClick={login}>Connexion</button>
+                    <button disabled={!validMailSignIn || !validPwdSignIn ? true : false} onClick={signin}>Connexion</button>
                     <h1>{loginStatus}</h1>
                 </form>
                 <p>
