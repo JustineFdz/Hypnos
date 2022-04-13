@@ -12,60 +12,63 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const REGISTER_URL = '/register';
 
 export default function SignIn() {
-  const mailRef = useRef();
+  const mailSignInRef = useRef();
   const errRef =useRef();
 
-  const [user, setUser] = useState('');
-  const [validName, setValidName] = useState(false);
-  const [userFocus, setUserFocus] = useState(false);
+  const [mailSignIn, setMailSignIn] = useState('');
+  const [validMailSignIn, setValidMailSignIn] = useState(false);
+  const [mailSignInFocus, setMailSignInFocus] = useState(false);
 
-  const [mail, setMail] = useState('');
-  const [validMail, setValidMail] = useState(false);
-  const [mailFocus, setMailFocus] = useState(false);
-
-  const [pwd, setPwd] = useState('');
-  const [validPwd, setValidPwd] = useState(false);
-  const [pwdFocus, setPwdFocus] = useState(false);
-
-  const [matchPwd, setMatchPwd] = useState('');
-  const [validMatch, setValidMatch] = useState(false);
-  const [matchFocus, setMatchFocus] = useState(false);
+  const [pwdSignIn, setPwdSignIn] = useState('');
+  const [validPwdSignIn, setValidPwdSignIn] = useState(false);
+  const [pwdSignInFocus, setPwdSignInFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
 
+  const [loginStatus, setLoginStatus] = useState('');
+
+  const login = () => {
+    axios.post('https://hypnos-app.herokuapp.com/signin', {
+      mail: mailSignIn, 
+      password:pwdSignIn
+    }).then((response) => {
+
+      if (response.data.message){
+          setLoginStatus(response.data.message)
+      } else{
+        setLoginStatus(response.data[0].username)
+      }
+    });
+  };
+
   useEffect(() => {
-    mailRef.current.focus();
+    mailSignInRef.current.focus();
 }, [])
 
 useEffect(() => {
-    setValidName(USER_REGEX.test(user));
-}, [user])
+    setValidMailSignIn(MAIL_REGEX.test(mailSignIn));
+}, [mailSignIn])
 
 useEffect(() => {
-    setValidMail(MAIL_REGEX.test(mail));
-}, [mail])
-
-useEffect(() => {
-    setValidPwd(PWD_REGEX.test(pwd));
-    setValidMatch(pwd === matchPwd);
-}, [pwd, matchPwd])
+    setValidPwdSignIn(PWD_REGEX.test(pwdSignIn));
+}, [pwdSignIn])
 
 useEffect(() => {
     setErrMsg('');
-}, [mail, pwd, matchPwd])
+}, [mailSignIn, pwdSignIn])
 
 const handleSubmit = async (e) => {
     e.preventDefault();
-    const v1 = MAIL_REGEX.test(mail);
-    const v2 = PWD_REGEX.test(pwd);
+    const v1 = MAIL_REGEX.test(mailSignIn);
+    const v2 = PWD_REGEX.test(pwdSignIn);
     if (!v1 || !v2) {
         setErrMsg("Entrée invalide");
         return;
     }
     try {
         const response = await axios.post(REGISTER_URL,
-            JSON.stringify({ mail, pwd }),
+            JSON.stringify({ mailSignIn, pwdSignIn }),
             {
                 headers: { 'Content-Type': 'application/json' },
                 withCredentials: true
@@ -75,9 +78,9 @@ const handleSubmit = async (e) => {
         console.log(response?.accessToken);
         console.log(JSON.stringify(response))
         setSuccess(true);
-        setMail('');
-        setPwd('');
-        setMatchPwd('');
+        setMailSignIn('');
+        setPwdSignIn('');
+        //setMatchPwdSignIn('');
     } catch (err) {
         if (!err?.response) {
             setErrMsg('Aucune réponse du serveur');
@@ -107,57 +110,57 @@ return (
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="mail">
                         Email:
-                        <FontAwesomeIcon icon={faCheck} className={validMail ? "valid" : "hide"} />
-                        <FontAwesomeIcon icon={faTimes} className={validMail || !mail ? "hide" : "invalid"} />
+                        <FontAwesomeIcon icon={faCheck} className={validMailSignIn ? "valid" : "hide"} />
+                        <FontAwesomeIcon icon={faTimes} className={validMailSignIn || !mailSignIn ? "hide" : "invalid"} />
                     </label>
                     <input
                         type="email"
                         id="mail"
-                        ref={mailRef}
+                        ref={mailSignInRef}
                         autoComplete="off"
-                        onChange={(e) => setMail(e.target.value)}
-                        value={mail}
+                        onChange={(e) => setMailSignIn(e.target.value)}
+                        value={mailSignIn}
                         required
-                        aria-invalid={validMail ? "false" : "true"}
+                        aria-invalid={validMailSignIn ? "false" : "true"}
                         aria-describedby="uidnote"
-                        onFocus={() => setMailFocus(true)}
-                        onBlur={() => setMailFocus(false)}
+                        onFocus={() => setMailSignInFocus(true)}
+                        onBlur={() => setMailSignInFocus(false)}
                     />
-                    {/* <p id="uidnote" className={mailFocus && mail && !validMail ? "instructions" : "offscreen"}>
+                    {/* <p id="uidnote" className={mailSignInFocus && mailSignIn && !validMailSignIn ? "instructions" : "offscreen"}>
                         <FontAwesomeIcon icon={faInfoCircle} />
-                        Entrer un email valide
+                        Entrer un emailSignIn valide
                     </p> */}
 
 
                     <label htmlFor="password">
                         Mot de passe:
-                        <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />
-                        <FontAwesomeIcon icon={faTimes} className={validPwd || !pwd ? "hide" : "invalid"} />
+                        <FontAwesomeIcon icon={faCheck} className={validPwdSignIn ? "valid" : "hide"} />
+                        <FontAwesomeIcon icon={faTimes} className={validPwdSignIn || !pwdSignIn ? "hide" : "invalid"} />
                     </label>
                     <input
                         type="password"
                         id="password"
-                        onChange={(e) => setPwd(e.target.value)}
-                        value={pwd}
+                        onChange={(e) => setPwdSignIn(e.target.value)}
+                        value={pwdSignIn}
                         required
-                        aria-invalid={validPwd ? "false" : "true"}
+                        aria-invalid={validPwdSignIn ? "false" : "true"}
                         aria-describedby="pwdnote"
-                        onFocus={() => setPwdFocus(true)}
-                        onBlur={() => setPwdFocus(false)}
+                        onFocus={() => setPwdSignInFocus(true)}
+                        onBlur={() => setPwdSignInFocus(false)}
                     />
-                    {/* <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
+                    {/* <p id="pwdSignInnote" className={pwdSignInFocus && !validPwdSignIn ? "instructions" : "offscreen"}>
                         <FontAwesomeIcon icon={faInfoCircle} />
                         8 à 24 caractères.<br />
                         Doit inclure des lettres majuscules et minuscules, un chiffre et un caractère spécial.<br />
                         Caractères spéciaux autorisés : <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
                     </p> */}
 
-                    <button disabled={!validMail || !validPwd ? true : false}>Connexion</button>
+                    <button disabled={!validMailSignIn || !validPwdSignIn ? true : false} onClick={login}>Connexion</button>
+                    <h1>{loginStatus}</h1>
                 </form>
                 <p>
                     Pas encore inscrit ?<br />
                     <span className="line">
-                        {/*put router link here*/}
                         <Link to ='/signup'>Inscription</Link>
                     </span>
                 </p>

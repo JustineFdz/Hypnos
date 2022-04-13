@@ -1,42 +1,22 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 
 export const Booking = () => {
-    const hotels = [
-        {
-            hotelTitle:"La Bergerie",
-            roomsTitle:[
-                "La diamant",
-                "La rubis",
-                "La saphir",
-                "L'améthyste",
-                "L'eben"
-            ]
-        },
-        {
-            hotelTitle:"Le Chabichou",
-            roomsTitle:[
-                "La diamant1",
-                "La rubis1",
-                "La saphir1",
-                "L'améthyste1",
-                "L'eben1"
-            ]
-        },
-        {
-            hotelTitle:"L'Altapure'",
-            roomsTitle:[
-                "La diamant2",
-                "La rubis2",
-                "La saphir2",
-                "L'améthyste2",
-                "L'eben2"
-            ]
-        },
-    ]
         const [value, onChange] = useState(new Date());
 
+
+        const [hotels, setHotels] = useState([]);
+
+        useEffect(async () => {
+          const result = await axios(
+            "https://hypnos-booking-backend.herokuapp.com/hotels"
+          );
+    
+          setHotels(result.data); 
+        });
+        
     return (
     <div className="allForms-container">
       <div className="allForms mx-3 py-3">

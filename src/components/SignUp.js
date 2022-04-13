@@ -6,8 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 
 
-const NAME_REGEX = /^[a-zA-Z]{3}$/;
-const SURNAME_REGEX = /^[a-zA-Z]{3}$/;
+const NAME_REGEX = /^[a-zA-Z]{3,50}$/;
+const SURNAME_REGEX = /^[a-zA-Z]{3,50}$/;
 const MAIL_REGEX = /^[a-zA-Z0-9.]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const REGISTER_URL = '/register';
@@ -38,6 +38,17 @@ export default function SignUp() {
 
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
+
+
+  const register = () => {
+    axios.post('https://hypnos-app.herokuapp.com/signup', {
+      name: name, 
+      surname: surname,
+      mail:mail,
+      password:pwd
+    }).then((response) =>
+    console.log(response )) ;
+  };
 
 
 useEffect(() => {
@@ -226,7 +237,7 @@ return (
                         Doit correspondre au premier champ de saisie du mot de passe.
                     </p>
 
-                    <button disabled={!validMail || !validPwd || !validMatch ? true : false}>Inscription</button>
+                    <button disabled={!validMail || !validPwd || !validMatch ? true : false} onClick={register}>Inscription</button>
                 </form>
                 <p>
                     Déjà inscrit?<br />
