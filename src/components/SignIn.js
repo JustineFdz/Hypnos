@@ -24,21 +24,21 @@ export default function SignIn() {
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
 
-  const [loginStatus, setLoginStatus] = useState('');
+//   const [loginStatus, setLoginStatus] = useState('');
 
-  const signin = () => {
-    axios.post('https://hypnos-app.herokuapp.com/signin', {
-      mail: mailSignIn, 
-      password:pwdSignIn
-    }).then((response) => {
+//   const signin = () => {
+//     axios.post('http://localhost:3000/signin', {
+//       mail: mailSignIn, 
+//       password:pwdSignIn
+//     }).then((response) => {
 
-      if (response.data.message){
-          setLoginStatus(response.data.message)
-      } else{
-        setLoginStatus(response.data[0].username)
-      }
-    });
-  };
+//       if (response.data.message){
+//           setLoginStatus(response.data.message)
+//       } else{
+//         setLoginStatus(response.data[0].username)
+//       }
+//     });
+//   };
 
   useEffect(() => {
     mailSignInRef.current.focus();
@@ -153,7 +153,7 @@ return (
                         Caractères spéciaux autorisés : <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
                     </p> */}
 
-                    <button disabled={!validMailSignIn || !validPwdSignIn ? true : false} onClick={signin}>Connexion</button>
+                    <button disabled={!validMailSignIn || !validPwdSignIn ? true : false} >Connexion</button>
                     <h1>{loginStatus}</h1>
                 </form>
                 <p>
@@ -171,3 +171,4 @@ return (
 
 }
 
+// button onClick={signin}

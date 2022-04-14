@@ -40,15 +40,15 @@ export default function SignUp() {
   const [success, setSuccess] = useState(false);
 
 
-  const signup = () => {
-    axios.post('https://hypnos-app.herokuapp.com/signup', {
-      name: name, 
-      surname: surname,
-      mail:mail,
-      password:pwd
-    }).then((response) =>
-    console.log(response )) ;
-  };
+//   const signup = () => {
+//     axios.post('http://localhost:3000/signup', {
+//       name: name, 
+//       surname: surname,
+//       mail:mail,
+//       password:pwd
+//     }).then((response) =>
+//     console.log(response )) ;
+//   };
 
 
 useEffect(() => {
@@ -237,7 +237,7 @@ return (
                         Doit correspondre au premier champ de saisie du mot de passe.
                     </p>
 
-                    <button disabled={!validMail || !validPwd || !validMatch ? true : false} onClick={signup}>Inscription</button>
+                    <button disabled={!validMail || !validPwd || !validMatch ? true : false} >Inscription</button>
                 </form>
                 <p>
                     Déjà inscrit?<br />
@@ -255,3 +255,4 @@ return (
 
 }
 
+// button onClick={signup}
