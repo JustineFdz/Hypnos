@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+import Navbar from './Navbar';
 
 export const Booking = () => {
         const [value, onChange] = useState(new Date());
@@ -18,6 +18,8 @@ export const Booking = () => {
         });
         
     return (
+      <>
+        <Navbar />
     <div className="allForms-container">
       <div className="allForms mx-3 py-3">
         <div className="content">
@@ -48,6 +50,7 @@ export const Booking = () => {
         </div>
       </div>
     </div>
+    </>
   );
 
   }

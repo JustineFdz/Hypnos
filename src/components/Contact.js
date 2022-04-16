@@ -1,8 +1,10 @@
 import React from "react";
-
+import Navbar from './Navbar';
 
 export default function Contact() {
   return (
+    <>
+    <Navbar />
     <div className="allForms-container">
       <div className="allForms mx-3 py-3">
         <div className="content">
@@ -31,6 +33,7 @@ export default function Contact() {
         </div>
       </div>
     </div>
+    </>
   );
 
   }

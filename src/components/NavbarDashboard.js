@@ -25,7 +25,7 @@ export default function Navbar() {
     <nav>
       <div className="container px-3 mx-3">
         <div className="brand">
-          <span>Hypnos</span>
+          <span>Gestion</span>
         </div>
         <div className="links-container" onClick = {(e)=>e.stopPropagation()}>
           <div className="toggle">
@@ -43,24 +43,27 @@ export default function Navbar() {
           <div className={`links ${navState?"responsive-toggle":""}`}>
             <ul>
               <li>
-                <Link to ='/' onClick={handleMenuClose}>Accueil</Link>
+                <Link to ='/' onClick={handleMenuClose}>Acceuil</Link>
+              </li>
+              <li>
+                <Link to ='/users' >Utilisateurs</Link>
+              </li>
+              <li>
+                <Link to ='/owners'>Gérants</Link>
               </li>
               <li>
                 <Link 
                   aria-controls='menu'
                   onClick={handleOpenMenu}
-                  to ='/hotels'>
+                  to ='/establishments'>
                     Hotels 
                 </Link>
               </li>
               <li>
-                <Link to ='/reservation'>Réserver</Link>
+              <Link to ='/messages'>Messages</Link>
               </li>
               <li>
-              <Link to ='/contact'>Contact</Link>
-              </li>
-              <li>
-              <Link to ='/login'>Connexion</Link>
+              <Link to ='/logout'>Déconnexion</Link>
               </li>
             </ul>
           </div>

@@ -1,3 +1,5 @@
+import Navbar from './Navbar';
+
 export const Home = () => {
     const data = [
         {
@@ -22,6 +24,8 @@ export const Home = () => {
         },
       ];
       return (
+        <>
+        <Navbar />
         <div className="hotel-container mx-3 py-3">
           <div className="container">
             <div className="title-container">
@@ -48,5 +52,6 @@ export const Home = () => {
             </div>
           </div>
         </div>
+       </>
       )
 }
