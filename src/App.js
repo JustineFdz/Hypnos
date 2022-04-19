@@ -15,6 +15,7 @@ import Users from './components/Users';
 import { Admin } from './components/Admin';
 import Establishements from './components/Establishements';
 import Hotel from './components/Hotel';
+// import RoomsDashboard from './components/RoomsDashboard';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path='/establishments' element={<Establishements/>} />
         <Route path='/messages' element={<Admin/>} />
         <Route path='/dashboard' element={<Admin/>} />
+        {/* <Route path='/roomsDashboard' element={<RoomsDashboard/>} /> */}
         <Route path='/hotels' element={<Hotels/>} />
 
       </Routes>

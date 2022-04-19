@@ -20,14 +20,13 @@ function Registration() {
     name: Yup.string().min(3).max(15).required(),
     surname: Yup.string().min(3).max(15).required(),
     mail: Yup.string().email(),
-    password: Yup.string().min(4).max(20).required(),
-    // password: Yup.string()
-    //     .matches(
-    //       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/,
-    //         '8 à 24 caractères.Doit inclure des lettres majuscules et minuscules, un chiffre et un caractère spécial.'
+    password: Yup.string()
+        .matches(
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/,
+            '8 à 24 caractères.Doit inclure des lettres majuscules et minuscules, un chiffre et un caractère spécial.'
             
-    //     )
-    //     .required(''),
+        )
+        .required(''),
   });
 
   const onSubmit = (data) => {

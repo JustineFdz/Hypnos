@@ -21,7 +21,10 @@ function Login() {
 
   const login = (data) => {
     axios.post("http://localhost:3001/auth/login", data).then((response) =>{
-      console.log(response.data);
+      if (response.data.error) {alert(response.data.error);}
+
+      else {sessionStorage.setItem("accessToken", response.data);}
+
       //navigate("/test")
     })
   
@@ -39,7 +42,7 @@ function Login() {
           <Field 
             // type="email"
             className="field"
-            id="inputCreateMail" 
+            id="inputMail" 
             name="mail" 
             // placeholder="name"
             />
@@ -48,7 +51,7 @@ function Login() {
           <Field 
             className="field"
             type="password"
-            id="inputCreatePassword" 
+            id="inputPassword" 
             name="password" 
             // placeholder="Your password"
             />

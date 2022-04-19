@@ -19,12 +19,6 @@ export default function Establishements() {
   const validationSchema = Yup.object().shape({
     name: Yup.string().required(),
     description: Yup.string().required(),
-    // picture: Yup.string()
-    //     .matches(
-    //         /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
-    //         'Enter correct url!'
-    //     )
-    //     .required('Please enter website'),
     picture: Yup.string().required(),
     adress: Yup.string().required(),
     postCode: Yup.number().required(),
