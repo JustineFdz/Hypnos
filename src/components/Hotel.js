@@ -2,9 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import axios from 'axios';
 import Navbar from './Navbar';
+import { useNavigate } from "react-router-dom";
 
 function Hotel() {
   let {id} = useParams();
+  let navigate = useNavigate();
   const [hotelObject, setHotelObject] = useState({});
   const [rooms, setRooms] = useState([]);
   const [newTitle, setNewTitle] = useState('');
@@ -12,6 +14,13 @@ function Hotel() {
   const [newCoverPicture, setNewCoverPicture] = useState('');
   const [newPrice, setNewPrice] = useState('');
   const [newBookingLink, setNewBookingLink] = useState('');
+  // const [newPicture1, setNewPicture1] = useState('');
+  // const [newPicture2, setNewPicture2] = useState('');
+  // const [newPicture3, setNewPicture3] = useState('');
+  // const [newPicture4, setNewPicture4] = useState('');
+  // const [newPicture5, setNewPicture5] = useState('');
+  // const [newPicture6, setNewPicture6] = useState('');
+  // const [newPicture7, setNewPicture7] = useState('');
   
 
   useEffect(() => {
@@ -28,6 +37,13 @@ function Hotel() {
       setNewCoverPicture(response.data);
       setNewPrice(response.data);
       setNewBookingLink(response.data);
+      // setNewPicture1(response.data);
+      // setNewPicture2(response.data);
+      // setNewPicture3(response.data);
+      // setNewPicture4(response.data);
+      // setNewPicture5(response.data);
+      // setNewPicture6(response.data);
+      // setNewPicture7(response.data);
     });
 
   },[]);
@@ -40,7 +56,14 @@ function Hotel() {
       coverPicture:newCoverPicture,
       price:newPrice,
       bookingLink:newBookingLink,
-      HotelId:id},
+      // picture1:newPicture1,
+      // picture2:newPicture2,
+      // picture3:newPicture3,
+      // picture4:newPicture4,
+      // picture5:newPicture5,
+      // picture6:newPicture6,
+      // picture7:newPicture7,
+      HotelId:id}, 
       {
         headers: {
           accessToken: localStorage.getItem("accessToken"),
@@ -72,7 +95,7 @@ function Hotel() {
           {
             rooms.map((value,key)=>{
               return (
-                <div className="hotel"  key={key}>
+                <div className="hotel"  key={key} >
                   <img src={value.coverPicture} alt="hotel" />
                   <h4>{value.title}</h4>
                   <p >{value.description}</p>
@@ -80,7 +103,10 @@ function Hotel() {
                   {/* <button > Lien vers la resa</button> */}
                   <p>{value.bookingLink}</p>
                   {/*  */}
-                  {/* <button onClick={() => navigate(`/post/${name}`)}> Voir plus </button> */}
+                  <div className='roomsButton'>
+                    <button onClick={() => navigate(`/room/hotel/${id}/room/${value.id}`)}> Voir plus </button> 
+                    <button onClick={() => navigate(`/reserver-chambre/${value.id}`)}> Réserver </button> 
+                  </div>
                 </div>
               );
             })
@@ -123,3 +149,5 @@ export default Hotel
 
 
 // onClick={() => navigate(`/hotel/${room.id}`)}
+
+//onClick={() => navigate(`/room/${value.id}`)}

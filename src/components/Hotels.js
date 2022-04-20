@@ -41,7 +41,6 @@ function Hotels() {
                 <p>{value.adress}</p>
                 <p>{value.postCode}</p>
                 <p>{value.city}</p>
-                {/* <button onClick={() => navigate(`/post/${name}`)}> Voir plus </button> */}
               </div>
             );
           })

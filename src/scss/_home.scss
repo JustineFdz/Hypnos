@@ -1,5 +1,5 @@
 .hotel-container, .home-container{
-  .logoDor{
+  .gold{
     width: 5rem;
     height: 5rem;
 
@@ -80,7 +80,7 @@
       flex-direction: row-reverse;
       gap: 4rem;
       .hotels {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
       }
     }
   }
