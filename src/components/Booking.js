@@ -10,11 +10,9 @@ export const Booking = () => {
 
   useEffect(() => {
     axios.get("http://localhost:3001/hotels").then((response) => {
-      setListOfHotels(response.data);
+      setListOfHotels(response.data); 
     });
   },[]);
-
-
         
     return (
       <>
@@ -30,17 +28,15 @@ export const Booking = () => {
             <select>
               <option>--- Hôtels ---</option>
               {
-          listOfHotels.map((value,key)=>{
-            return (
-              <div className="hotel" key={key} >
-                <option>{value.name}</option>
-              </div>
-            );
-          })
-        }
+                listOfHotels.map((value,key)=>{
+                  return (
+                      <option className="hotel" key={key}>{value.name}</option>
+                  );
+                })
+              }
             </select>
             <label htmlFor="Choix">Choisissez une Suite</label>
-                        <select>
+            <select>
               <option>--- Suites ---</option>
             </select>
             <label htmlFor="Choix">Date d'arrivée: {startDate}</label>

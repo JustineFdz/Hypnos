@@ -1,9 +1,5 @@
-.hotel-container, .home-container{
-  .gold{
-    width: 5rem;
-    height: 5rem;
-
-  }
+.hotel-container, .home-container, .room{
+ min-height: 88vh;
   .container{
     display: flex;
     flex-direction: column;
@@ -22,6 +18,7 @@
           letter-spacing: 0.1rem;
           line-height: 1.2rem;
       }
+
     } 
 
   h2{
@@ -64,23 +61,53 @@
             color:var(--blue-petrol);
         }
       }
+      .room-content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+        padding: 1rem;
+        border-radius: 0.7rem;
+        img{
+          max-inline-size: 100%;
+          block-size:auto;
+      }
+      h4{
+          color: var(--gold);
+      }
+      p{
+          color:var(--blue-petrol);
+      }
+      }
     }  
+
   }
   }
 @media only screen and (min-device-width: 768px) {
   .container {
     .hotels {
       grid-template-columns: repeat(2, 1fr);
+     .room-content{
+       img{
+         width: 20rem;
+         height: 15rem;
+       }
+     }
     }
   }
 }
 @media screen and (min-device-width: 1200px) {
   .container {
-    .content {
-      flex-direction: row-reverse;
-      gap: 4rem;
+    .container {
       .hotels {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+       .room-content{
+         img{
+           width: 20rem;
+           height: 15rem;
+         }
+       }
       }
     }
   }

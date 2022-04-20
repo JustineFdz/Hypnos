@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState} from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import {Formik, Form, Field, ErrorMessage} from "formik";
 import * as Yup from 'yup';
@@ -8,7 +8,10 @@ import Navbar from './Navbar';
 
 
 function Login() {
-  // let navigate = useNavigate();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [authError, setAUthError] = useState(false);
+  const  redirectionUrl  = location?.state?.redirectionUrl;
   const initialValues={
     mail:"",
     password:"",
@@ -21,11 +24,23 @@ function Login() {
 
   const login = (data) => {
     axios.post("http://localhost:3001/auth/login", data).then((response) =>{
-      if (response.data.error) {alert(response.data.error);}
+      if (response.data.error) {
+        setAUthError(true);
+      }
 
-      else {sessionStorage.setItem("accessToken", response.data);}
 
-      //navigate("/test")
+      else {
+        setAUthError(false);
+        sessionStorage.setItem("accessToken", response.data.accessToken);
+        sessionStorage.setItem("name", response.data.name);
+        sessionStorage.setItem("surname", response.data.surname);
+        if (redirectionUrl) {
+          navigate(`/${redirectionUrl}`);
+        } else { 
+          navigate(`/`);
+        }
+       
+      }
     })
   
   };  
@@ -55,7 +70,8 @@ function Login() {
             name="password" 
             // placeholder="Your password"
             />
-          <button type='submit'>Connexion</button>
+            <button type='submit'>Connexion</button>
+            { authError && <div className='alertMessage'> Mauvaise combinaison mail / mot de passe</div>}
           <p>
         Pas encore inscrit ?<br />
         <span className="line">

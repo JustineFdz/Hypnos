@@ -30,6 +30,10 @@
   body{
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
+    height:100vh;
+    margin-top:5vh;
+    background-color: var(--background);
+    
   }
 
   h1,h2,h3,h4{
@@ -86,4 +90,6 @@
       p{
           font-size: 1rem;
       }
-  }
+  
+
+    }

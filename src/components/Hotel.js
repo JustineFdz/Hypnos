@@ -104,8 +104,8 @@ function Hotel() {
                   <p>{value.bookingLink}</p>
                   {/*  */}
                   <div className='roomsButton'>
-                    <button onClick={() => navigate(`/room/hotel/${id}/room/${value.id}`)}> Voir plus </button> 
-                    <button onClick={() => navigate(`/reserver-chambre/${value.id}`)}> Réserver </button> 
+                    <button onClick={() => navigate(`/room/hotel/${id}/room/${value.id}`, { state: { hotelName: hotelObject.name, suiteName:  value.title } })}> Voir plus </button> 
+                    <button onClick={() => navigate(`/book-room/${value.id}`)}> Réserver </button> 
                   </div>
                 </div>
               );

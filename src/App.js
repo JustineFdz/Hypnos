@@ -12,6 +12,7 @@ import { Admin } from './components/Admin';
 import Establishements from './components/Establishements';
 import Hotel from './components/Hotel';
 import Room from './components/Room';
+import Footer from './components/Footer';
 // import RoomsDashboard from './components/RoomsDashboard';
 
 function App() {
@@ -32,10 +33,11 @@ function App() {
         <Route path='/owners' element={<Admin/>} />
         <Route path='/establishments' element={<Establishements/>} />
         <Route path='/dashboard' element={<Admin/>} />
-        <Route path='/reserver-chambre/:id' element={<RoomBooking/>} />
+        <Route path='/book-room/:id' element={<RoomBooking/>} />
         {/* <Route path='/roomsDashboard' element={<RoomsDashboard/>} /> */}
 
       </Routes>
+      <Footer/>
     </div>
     </>
   );
