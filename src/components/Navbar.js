@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import {Menu, MenuItem} from '@mui/material'
+
 import React,{useState} from 'react';
 import {GiHamburgerMenu} from 'react-icons/gi';
 import {MdClose} from 'react-icons/md';
@@ -47,8 +47,6 @@ export default function Navbar() {
               </li>
               <li>
                 <Link 
-                  aria-controls='menu'
-                  onClick={handleOpenMenu}
                   to ='/hotels'>
                     Hotels 
                 </Link>
@@ -67,15 +65,6 @@ export default function Navbar() {
         </div>
       </div>
     </nav>
-    <Menu className='menu' onClose={handleMenuClose} anchorEl={anchorEl} open={Boolean(anchorEl)}>
-      <MenuItem onClick={handleMenuClose}><Link to ='/chabichou'>Chabichou</Link></MenuItem>
-      <MenuItem onClick={handleMenuClose}><Link to ='/chabichou'>Chabichou</Link></MenuItem>
-      <MenuItem onClick={handleMenuClose}><Link to ='/chabichou'>Chabichou</Link></MenuItem>
-      <MenuItem onClick={handleMenuClose}><Link to ='/chabichou'>Chabichou</Link></MenuItem>
-      <MenuItem onClick={handleMenuClose}><Link to ='/chabichou'>Chabichou</Link></MenuItem>
-      <MenuItem onClick={handleMenuClose}><Link to ='/chabichou'>Chabichou</Link></MenuItem>
-      <MenuItem onClick={handleMenuClose}><Link to ='/chabichou'>Chabichou</Link></MenuItem>
-    </Menu>
     </> 
   )
 }

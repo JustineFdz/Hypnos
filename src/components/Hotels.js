@@ -11,12 +11,12 @@ function Hotels() {
   const [listOfHotels, setListOfHotels] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3001/hotels").then((response) => {
+    axios.get("https://hypnos-booking-backend.herokuapp.com/hotels").then((response) => {
       setListOfHotels(response.data);
     });
   },[]);
 
-  // `http://localhost:3001/hotels/byId/${id}`
+  // `https://hypnos-booking-backend.herokuapp.com/hotels/byId/${id}`
   
 
   return (

@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import {Menu, MenuItem} from '@mui/material'
 import React,{useState} from 'react';
 import {GiHamburgerMenu} from 'react-icons/gi';
 import {MdClose} from 'react-icons/md';
@@ -10,9 +9,9 @@ export default function Navbar() {
   const [navState,setNavState] = useState(false);
   const html = document.querySelector("html");
 
-  const handleOpenMenu = (e) =>{
-    setAnchorEl(e.currentTarget);
-  }
+  // const handleOpenMenu = (e) =>{
+  //   setAnchorEl(e.currentTarget);
+  // }
 
   const handleMenuClose = () =>{
     setAnchorEl(null);
@@ -43,7 +42,7 @@ export default function Navbar() {
           <div className={`links ${navState?"responsive-toggle":""}`}>
             <ul>
               <li>
-                <Link to ='/' onClick={handleMenuClose}>Acceuil</Link>
+                <Link to ='/' onClick={handleMenuClose}>Accueil</Link>
               </li>
               <li>
                 <Link to ='/users' >Utilisateurs</Link>
@@ -53,14 +52,9 @@ export default function Navbar() {
               </li>
               <li>
                 <Link 
-                  aria-controls='menu'
-                  onClick={handleOpenMenu}
                   to ='/establishments'>
                     Hotels 
                 </Link>
-              </li>
-              <li>
-              <Link to ='/messages'>Messages</Link>
               </li>
               <li>
               <Link to ='/logout'>Déconnexion</Link>
@@ -70,15 +64,6 @@ export default function Navbar() {
         </div>
       </div>
     </nav>
-    <Menu className='menu' onClose={handleMenuClose} anchorEl={anchorEl} open={Boolean(anchorEl)}>
-      <MenuItem onClick={handleMenuClose}><Link to ='/chabichou'>Chabichou</Link></MenuItem>
-      <MenuItem onClick={handleMenuClose}><Link to ='/chabichou'>Chabichou</Link></MenuItem>
-      <MenuItem onClick={handleMenuClose}><Link to ='/chabichou'>Chabichou</Link></MenuItem>
-      <MenuItem onClick={handleMenuClose}><Link to ='/chabichou'>Chabichou</Link></MenuItem>
-      <MenuItem onClick={handleMenuClose}><Link to ='/chabichou'>Chabichou</Link></MenuItem>
-      <MenuItem onClick={handleMenuClose}><Link to ='/chabichou'>Chabichou</Link></MenuItem>
-      <MenuItem onClick={handleMenuClose}><Link to ='/chabichou'>Chabichou</Link></MenuItem>
-    </Menu>
     </> 
   )
 }
