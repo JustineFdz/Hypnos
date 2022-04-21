@@ -68,3 +68,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+Use the following command to install the dependencies:
+
+cd hypnos-react-app
+npm install
+Set your environment variables:
+
+"http://localhost:3001/"
+
+Then run the following command to start the client:
+
+npm start
