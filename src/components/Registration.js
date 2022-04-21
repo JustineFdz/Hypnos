@@ -36,7 +36,7 @@ function Registration() {
     });
   };  
 
-  return (
+  return ( 
     <>
     <Navbar />
     <div className='allForms-container'>
