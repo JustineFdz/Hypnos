@@ -3,6 +3,7 @@ import {useParams, useLocation} from 'react-router-dom';
 import axios from 'axios';
 import Navbar from './Navbar';
 // import {  MemoryRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 export default function Room() {
@@ -60,7 +61,7 @@ export default function Room() {
                     <p >{description}</p>
                     <p >{price}€</p>
                     <a href={bookingLink}>booking</a>  
-                    {isLoggedIn &&  <button >Réserver</button>}
+                    {isLoggedIn &&  <Link to='/login'><button>Réserver</button></Link>}
                   </div>
             </div>
           </div>
