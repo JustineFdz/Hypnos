@@ -30,7 +30,7 @@ function Registration() {
   });
 
   const onSubmit = (data) => {
-    axios.post("hhttps://hypnos-booking-backend.herokuapp.comauth", data).then(() => {
+    axios.post("https://hypnos-booking-backend.herokuapp.com/auth", data).then(() => {
       console.log(data);
       // ensuite renvoyer réservation si le user arrive d'une page booking
     });

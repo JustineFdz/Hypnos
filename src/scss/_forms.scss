@@ -129,6 +129,9 @@ button {
 
 @media only screen and (min-device-width: 768px) {
   .allForms-container {
+    .content {
+      grid-template-columns: repeat(4, 1fr);
+    }
     .allForms, .formContainer {
       display: flex;
       flex-direction: column;
@@ -141,6 +144,9 @@ button {
 
 @media screen and (min-device-width: 1200px) {
   .allForms-container {
+    .content {
+      grid-template-columns: repeat(4, 1fr);
+    }
     .allForms, .formContainer {
       display: flex;
       flex-direction: column;

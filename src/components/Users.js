@@ -67,12 +67,12 @@
 //                   <div key={key}>
 //                   <div>{value.checkIn}</div>
 //                   <div>{value.checkOut}</div>
-//                   {/* Il faudra recupereer le nom de la suite */}
+//                   {/* nom de la suite */}
 //                   <div>{value.RoomId}</div>
-//                   {/* Il faudra recupereer le nom de l'hotel  */}
+//                   {/*nom de l'hotel  */}
 //                   <div>Nom de l'hotel ici</div>
 //                 </div>
-//               ); //ok je regarderai
+//               );
 //             })}
 //           </div>
 //           <div className="booking-dataGrid" style={{ height: 400, width: '100%' }}>
