@@ -36,7 +36,7 @@ export const Account = () => {
             <div className="title-container">
             <h2>Account</h2>
             <TableContainer component={Paper}>
-              <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <Table sx={{ minWidth: 350 }} aria-label="simple table">
                 <TableHead>
                   <TableRow>
                     <TableCell>Gestion</TableCell>
