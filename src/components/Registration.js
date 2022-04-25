@@ -28,7 +28,7 @@ function Registration() {
         )
         .required(''),
   });
-
+  
   const onSubmit = (data) => {
     axios.post("https://hypnos-booking-backend.herokuapp.com/auth", data).then(() => {
       console.log(data);
