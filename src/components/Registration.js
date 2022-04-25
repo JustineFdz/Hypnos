@@ -77,7 +77,7 @@ function Registration() {
             name="password" 
             // placeholder="Your password"
             />
-          <button type='submit'>Inscription</button>
+          <button type='submit'><Link to ='/'>Inscription</Link></button>
           <p>
             Déjà inscrit?<br />
             <span className="line">
