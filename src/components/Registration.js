@@ -4,11 +4,11 @@ import axios from 'axios';
 import {Formik, Form, Field, ErrorMessage} from "formik";
 import * as Yup from 'yup';
 import Navbar from './Navbar';
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 function Registration() {
-  // let navigate = useNavigate();
+  let navigate = useNavigate();
   const initialValues={
     name:"",
     surname:"",
@@ -32,6 +32,7 @@ function Registration() {
   const onSubmit = (data) => {
     axios.post("https://hypnos-booking-backend.herokuapp.com/auth", data).then(() => {
       console.log(data);
+      navigate("/");
       // ensuite renvoyer réservation si le user arrive d'une page booking
     });
   };  
@@ -77,7 +78,7 @@ function Registration() {
             name="password" 
             // placeholder="Your password"
             />
-          <button type='submit'><Link to ='/'>Inscription</Link></button>
+          <button type='submit'>Inscription</button>
           <p>
             Déjà inscrit?<br />
             <span className="line">

@@ -61,7 +61,7 @@ export default function Room() {
                     <p >{description}</p>
                     <p >{price}€</p>
                     <a href={bookingLink}>booking</a>  
-                    {isLoggedIn &&  <Link to='/login'><button>Réserver</button></Link>}
+                    {!isLoggedIn &&  <Link to='/login'><button>Réserver</button></Link>}
                   </div>
             </div>
           </div>

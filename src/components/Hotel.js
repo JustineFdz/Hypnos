@@ -73,6 +73,8 @@ function Hotel() {
       
     });
   };
+  // const isLoggedIn = sessionStorage.getItem("accessToken");
+
   
 
 
@@ -105,7 +107,10 @@ function Hotel() {
                   {/*  */}
                   <div className='roomsButton'>
                     <button onClick={() => navigate(`/room/hotel/${id}/room/${value.id}`, { state: { hotelName: hotelObject.name, suiteName:  value.title } })}> Voir plus </button> 
-                    <button onClick={() => navigate(`/book-room/${value.id}`)}> Réserver </button> 
+                    {/* <button onClick={() => navigate(`/book-room/${value.id}`)}> Réserver </button>  */}
+                    
+                    {/* {isLoggedIn &&<button onClick={() => navigate(`/book-room/${value.id}`)}> Réserver </button>} 
+                    {!isLoggedIn &&  <Link to='/login'><button>Réserver</button></Link>} */}
                   </div>
                 </div>
               );

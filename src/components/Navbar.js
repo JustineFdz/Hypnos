@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-
 import React,{useState} from 'react';
 import {GiHamburgerMenu} from 'react-icons/gi';
 import {MdClose} from 'react-icons/md';
@@ -58,7 +57,9 @@ export default function Navbar() {
               <Link to ='/contact'>Contact</Link>
               </li>
               <li>
+                
               <Link to ='/login'>Connexion</Link>
+              
               </li>
             </ul>
           </div>

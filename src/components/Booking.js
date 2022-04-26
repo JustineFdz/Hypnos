@@ -18,6 +18,7 @@ export const Booking = () => {
       setListOfHotels(response.data); 
     });
   }, []);
+  
   useEffect(() => {
     if (selectedHotel) {
       axios.get(`https://hypnos-booking-backend.herokuapp.com/rooms/${selectedHotel}`).then((response) => {
@@ -25,6 +26,7 @@ export const Booking = () => {
     });
     }
   }, [selectedHotel]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     axios.post(`https://hypnos-booking-backend.herokuapp.com/bookings/hotel/${selectedHotel}/room/${selectedSuite}`, {
