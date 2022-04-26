@@ -103,7 +103,7 @@ function Hotel() {
                   <p >{value.description}</p>
                   <p >{value.price}€</p>
                   {/* <button > Lien vers la resa</button> */}
-                  <p>{value.bookingLink}</p>
+                  {/* <p>{value.bookingLink}</p> */}
                   {/*  */}
                   <div className='roomsButton'>
                     <button onClick={() => navigate(`/room/hotel/${id}/room/${value.id}`, { state: { hotelName: hotelObject.name, suiteName:  value.title } })}> Voir plus </button> 
