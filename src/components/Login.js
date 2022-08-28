@@ -31,7 +31,7 @@ function Login() {
   });
   
   // const admin = (role) =>{
-  //   axios.post("https://hypnos-booking-backend.herokuapp.com/auth/login", role).then((response) =>{
+  //   axios.post("http://localhost:3001/auth/login", role).then((response) =>{
   //     if (response.data.error) {
   //       setIsAdmin(true);
   //       navigate(`/admin${redirectionUrl}`);
@@ -39,7 +39,7 @@ function Login() {
   // })}
 
   const login = (data) => {
-    axios.post("https://hypnos-booking-backend.herokuapp.com/auth/login", data).then((response) =>{
+    axios.post("http://localhost:3001/auth/login", data).then((response) =>{
       if (response.data.error) {
         setAUthError(true);
       }
@@ -50,6 +50,8 @@ function Login() {
         sessionStorage.setItem("name", response.data.name);
         sessionStorage.setItem("surname", response.data.surname);
         sessionStorage.setItem("userId", response.data.id);
+        // debugger
+        sessionStorage.setItem("role", response.data.role);
         history.back();
       }
     })
@@ -60,7 +62,7 @@ function Login() {
     <>
     <Navbar />
     <div className='allForms-container'>
-      <Formik initialValues={initialValues} onSubmit={login } validationSchema={validationSchema}>
+      <Formik initialValues={initialValues} onSubmit={login} validationSchema={validationSchema}>
         <Form className='formContainer'>
         <h1>Se connecter</h1>
             <label>Email :</label>

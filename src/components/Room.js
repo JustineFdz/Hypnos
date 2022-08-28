@@ -16,11 +16,11 @@ export default function Room() {
   const [endDate,setEndDate]=useState('');
 
   useEffect(() => {
-    axios.get(`https://hypnos-booking-backend.herokuapp.com/hotels/${hotelId}/room/${roomId}`).then((response) => {
+    axios.get(`http://localhost:3001/hotels/${hotelId}/room/${roomId}`).then((response) => {
       setRoom(response.data);
     });
 
-    axios.get(`https://hypnos-booking-backend.herokuapp.com/hotels/${hotelId}/bookings/${roomId}`).then((response) => {
+    axios.get(`http://localhost:3001/hotels/${hotelId}/bookings/${roomId}`).then((response) => {
       setCheckIn(response.data);
       setCheckOut(response.data);
       
@@ -28,7 +28,7 @@ export default function Room() {
   },[]);
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post(`https://hypnos-booking-backend.herokuapp.com/${hotelId}bookings/${roomId}`, {
+    axios.post(`http://localhost:3001/${hotelId}bookings/${roomId}`, {
       checkIn: startDate, 
       checkOut: endDate,
       userId: sessionStorage.getItem("userId")
@@ -45,15 +45,8 @@ export default function Room() {
       <Navbar />
       <div className="room mx-3 py-3">
         <div className="container">
-          <div className="title-container">
-            <h1>
-            {name}
-            </h1>
-            <p>
-            {description}
-            </p>
-          </div>
-          <h2>{title}</h2>
+          <h2>{hotelName}</h2>
+          <h3>{title}</h3>
           <div className="content">
             <div className="hotels">
                   <div className="room-content" >

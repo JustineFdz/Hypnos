@@ -31,14 +31,14 @@
 //   // });
 
 //   useEffect(() => {
-//     axios.get(`https://hypnos-booking-backend.herokuapp.com/hotels/byId/${id}`).then((response) => {
+//     axios.get(`http://localhost:3001/hotels/byId/${id}`).then((response) => {
 //       // setListOfHotel(response.data);
 //       setHotelObject(response.data);
 //     });
 //   },[]);
 
 //   // const onSubmit=(data)=>{
-//   //   axios.post("https://hypnos-booking-backend.herokuapp.com/hotels", data).then((response) => {
+//   //   axios.post("http://localhost:3001/hotels", data).then((response) => {
 //   //     // setListOfHotels(response.data)
 //   //     console.log('it worked')
 //   //   })

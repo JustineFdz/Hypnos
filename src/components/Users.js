@@ -1,91 +1,124 @@
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
-// import Navbar from "./Navbar";
-// import { DataGrid } from '@mui/x-data-grid';
-// //import {useParams} from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {useParams} from 'react-router-dom';
+import axios from 'axios';
+import Navbar from './Navbar';
+// import { useNavigate } from "react-router-dom";
 
-// export default function Users() {
-
-//   const columns = [
-//     { field: 'id', headerName: 'ID', width: 70 },
-//     { field: 'firstName', headerName: 'Nom', width: 130 },
-//     { field: 'lastName', headerName: 'Prénom', width: 130 },
-//     {
-//       field: 'age',
-//       headerName: 'Age',
-//       type: 'number',
-//       width: 90,
-//     },
-//     {
-//       field: 'fullName',
-//       headerName: 'Full name',
-//       description: 'This column has a value getter and is not sortable.',
-//       sortable: false,
-//       width: 160,
-//       valueGetter: (params) =>
-//         `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-//     },
-
-//   ];
-//   const rows = [
-//     { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-//     { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-//     { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-//     { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-//     { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-//     { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-//     { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-//     { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-//     { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-//   ];
-//   const [listOfBookings, setListOfBookings] = useState([]);
-
-//   useEffect(() => {
-//     const isLoggedIn = sessionStorage.getItem("accessToken");
-//     const userId = sessionStorage.getItem("userId");
-//     if (isLoggedIn) {
-//       axios
-//         .get(`https://hypnos-booking-backend.herokuapp.com/bookings/user/${userId}`)
-//         .then((response) => {
-//           setListOfBookings(response.data);
-//         });
-//     }
-//   }, []); 
+function Users() {
+  let {id} = useParams();
+  // let navigate = useNavigate();
+  const [usersObject, setUsersObject] = useState({});
+  const [newName, setNewName] = useState('');
+  const [newSurname, setNewSurname] = useState('');
+  const [newMail, setNewMail] = useState('');
+  // const [newPwd, setNewPwd] = useState('');
+  // const [newBookingLink, setNewBookingLink] = useState('');
 
 
-//   return (
-//     <>
-//       <Navbar />
-//       <div className="allForms-container">
-//         <div className="allForms mx-3 py-3">
-//           <div className="content">
-//             <div className="title-container">
-//               <h2>Account</h2>
-//             </div>
-//             {listOfBookings.map((value, key) => {
-//               return (
-//                   <div key={key}>
-//                   <div>{value.checkIn}</div>
-//                   <div>{value.checkOut}</div>
-//                   {/* nom de la suite */}
-//                   <div>{value.RoomId}</div>
-//                   {/*nom de l'hotel  */}
-//                   <div>Nom de l'hotel ici</div>
-//                 </div>
-//               );
-//             })}
-//           </div>
-//           <div className="booking-dataGrid" style={{ height: 400, width: '100%' }}>
-//       <DataGrid
-//         rows={rows}
-//         columns={columns}
-//         pageSize={5}
-//         rowsPerPageOptions={[5]}
-//         checkboxSelection
-//       />
-//     </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
+  useEffect(() => {
+    axios.get("http://localhost:3001/users/").then((response) => {
+      // setListOfHotel(response.data);
+      setUsersObject(response.data);
+    });
+
+    axios.get("http://localhost:3001/users").then((response) => {
+      setUsers(response.data);
+      setNewName(response.data);
+      setNewSurname(response.data);
+      setNewMail(response.data);
+      setNewRole(response.data);
+      // setNewBookingLink(response.data);
+    });
+
+  },[]);
+
+  const addUser = () =>{
+    axios
+    .post("http://localhost:3001/users", {
+      name:newName,
+      surname:newSurname,
+      mail:newMail,
+      pwd:newPwd,
+      role:newRole,
+      UserId:id}, 
+      {
+        headers: {
+          accessToken: localStorage.getItem("accessToken"),
+        },}) 
+    .then((response) =>{
+
+      
+    });
+  };
+
+  return (
+    <>
+    <Navbar />
+    <div className="hotel-container mx-3 py-3">
+      <div className="container">
+        {/* <div className="title-container">
+          <h1>
+         blabla
+          </h1>
+          <p>
+          </p>
+        </div> */}
+        <h2>Nos Utilisateurs</h2>
+        <div className="content">
+          <div className="hotels">
+          {
+            rooms.map((value,key)=>{
+              return (
+                <div className="hotel"  key={key} >
+                  <img src={value.name} alt="hotel" />
+                  <h4>{value.surname}</h4>
+                  <p >{value.mail}</p>
+                  <p >{value.role}</p>
+                  <p >{value.pwd}</p>
+                  <p >{value.role}</p>
+                  <div className='roomsButton'>
+                    {/* <button onClick={() => 
+                      navigate(`/room/hotel/${id}/room/${value.id}`, 
+                      { state: { hotelName: hotelObject.name, suiteName:  value.title } })}> 
+                      Voir plus 
+                    </button>  */}
+                  </div>
+                </div>
+              );
+            })
+          }  
+          </div>
+        </div>
+      </div>
+    </div>
+    <div className="allForms-container">
+      <div className="allForms mx-3 py-3">
+        <div className="content">
+          <div className="title-container">
+            <h2>Ajouter un gérant</h2>
+          </div>
+          <form className="contact-container">
+          <label htmlFor="title">Nom du gérant</label>
+            <input type="text"  onChange={(e)=>{setNewName(e.target.value)}}/>
+
+            <label htmlFor="description">Surname:</label>
+            <input type="text" onChange={(e)=>{setNewSurname(e.target.value)}}/>
+
+            <label htmlFor="coverPicture">Mail:</label>
+            <input type="text" onChange={(e)=>{setNewMail(e.target.value)}}/>
+
+            <label htmlFor="price">Pwd:</label>
+            <input type="text" onChange={(e)=>{setNewPwd(e.target.value)}}/>
+
+            <label htmlFor="bookingLink">Role:</label>
+            <input type="text" onChange={(e)=>{setNewRole(e.target.value)}} />
+            <button onClick={addUser}>Ajouter</button>
+          </form>
+        </div>
+      </div>
+    </div>
+   </>
+  )
+}
+
+export default Users;

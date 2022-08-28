@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import React,{useState} from 'react';
 import {GiHamburgerMenu} from 'react-icons/gi';
 import {MdClose} from 'react-icons/md';
-
+import { NavLink } from 'react-router-dom';
 
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -57,7 +57,16 @@ export default function Navbar() {
                 </Link>
               </li>
               <li>
-              <Link to ='/logout'>Déconnexion</Link>
+              <Link to ='/' 
+                onClick={() => { 
+                  sessionStorage.removeItem("accessToken");
+                  sessionStorage.removeItem("name");
+                  sessionStorage.removeItem("surname");
+                  sessionStorage.removeItem("userId"); // useerId ?
+                  sessionStorage.removeItem("role"); // useerId ?
+                  navigate('/login')
+                }}
+              >Déconnexion</Link>
               </li>
             </ul>
           </div>

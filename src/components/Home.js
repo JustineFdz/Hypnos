@@ -1,15 +1,21 @@
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 import Navbar from './Navbar';
+import NavbarDashboard from './NavbarDashboard';
+
 
 export const Home = () => {
   const navigate = useNavigate();
   const isLoggedIn = sessionStorage.getItem("accessToken");
   const name = sessionStorage.getItem("name");
   const surname = sessionStorage.getItem("surname");
+  const role = sessionStorage.getItem( "role")
+
       return (
         <>
-        <Navbar />
+        {role=='admin' ? (<NavbarDashboard />):(<Navbar />) }      
         <div className="home-container mx-3 py-3">
           <div className="container">
               <div className="title-container"> 
@@ -23,7 +29,8 @@ export const Home = () => {
             
             {isLoggedIn ? (
                   <div>
-                    <div className='hello'>Bonjour {`${name} ${surname}`}</div>
+                    {/* <div className='hello'>Bonjour {`${name} ${surname}`}</div> */}
+                    <div className='hello'>Bonjour {`${name} ${surname} ${role}`}</div>
                     <div>
                      <a onClick={() => {  navigate('/account')}}> Mes reservations</a>
                     </div>
@@ -33,12 +40,12 @@ export const Home = () => {
                           sessionStorage.removeItem("accessToken");
                           sessionStorage.removeItem("name");
                           sessionStorage.removeItem("surname");
-                          sessionStorage.removeItem("useerId");
+                          sessionStorage.removeItem("userId"); // useerId ?
                           navigate('/login')
                         }}>
-                        Se deconnecter
+                        Se deconnecter 
                       </a>
-                  </div>
+                    </div>
                   </div>
                 ) : (
                     <div>
