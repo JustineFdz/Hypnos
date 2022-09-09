@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "./Navbar";
 
-export const Account = () => {
+export const Account = () => { 
   const [listOfBookings, setListOfBookings] = useState([]);
 
   useEffect(() => {
