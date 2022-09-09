@@ -20,6 +20,6 @@ export default function Auth() {
     <h1>User</h1>
     <h1>Owner</h1>
     </div>
-  )
+  ) 
 }
 
