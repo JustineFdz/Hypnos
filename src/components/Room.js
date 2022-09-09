@@ -37,7 +37,7 @@ export default function Room() {
     });
   }
 
-  const { coverPicture, title, description, price, bookingLink, name } = room;
+  const { coverPicture, title, description, price, bookingLink } = room;
 
   const isLoggedIn = sessionStorage.getItem("accessToken");
     return (

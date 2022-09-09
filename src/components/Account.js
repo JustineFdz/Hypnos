@@ -4,6 +4,8 @@ import Navbar from "./Navbar";
 
 export const Account = () => { 
   const [listOfBookings, setListOfBookings] = useState([]);
+  // const [listOfHotels, setListOfHotels] = useState([]);
+  // const [listOfRooms, setListOfRooms] = useState([]);
 
   useEffect(() => {
     const isLoggedIn = sessionStorage.getItem("accessToken");
@@ -15,6 +17,8 @@ export const Account = () => {
         .then((response) => {
           console.log('>>>>>>>>>> booking Date',response.data)
           setListOfBookings(response.data);
+          // setListOfRooms(response.data);
+          // setListOfHotels(response.data);
         });
     }
   }, []);
