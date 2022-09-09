@@ -31,7 +31,7 @@ function Login() {
   });
   
   // const admin = (role) =>{
-  //   axios.post("http://localhost:3001/auth/login", role).then((response) =>{
+  //   axios.post("http://hypnos-booking-backend.herokuapp.com/auth/login", role).then((response) =>{
   //     if (response.data.error) {
   //       setIsAdmin(true);
   //       navigate(`/admin${redirectionUrl}`);
@@ -39,7 +39,7 @@ function Login() {
   // })}
 
   const login = (data) => {
-    axios.post("http://localhost:3001/auth/login", data).then((response) =>{
+    axios.post("http://hypnos-booking-backend.herokuapp.com/auth/login", data).then((response) =>{
       if (response.data.error) {
         setAUthError(true);
       }

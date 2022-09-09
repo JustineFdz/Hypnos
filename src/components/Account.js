@@ -11,7 +11,7 @@ export const Account = () => {
     //  debugger
     if (isLoggedIn) {
       axios
-        .get(`http://localhost:3001/bookings/user/${userId}`)
+        .get(`http://hypnos-booking-backend.herokuapp.com/bookings/user/${userId}`)
         .then((response) => {
           console.log('>>>>>>>>>> booking Date',response.data)
           setListOfBookings(response.data);
