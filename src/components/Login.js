@@ -52,7 +52,8 @@ function Login() {
         sessionStorage.setItem("userId", response.data.id);
         // debugger
         sessionStorage.setItem("role", response.data.role);
-        history.back();
+        // history.back();
+        navigate("/")
       }
     })
   
@@ -81,7 +82,8 @@ function Login() {
             name="password" 
             />
             <button type='submit'>Connexion</button>
-            { (authError) && <div className='alertMessage'> Mauvaise combinaison mail / mot de passe</div>}
+            { (authError)  &&
+            <div className='alertMessage' >  Mauvaise combinaison mail / mot de passe</div>}
           <p>
         Pas encore inscrit ?<br />
         <span className="line">

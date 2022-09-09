@@ -5,6 +5,7 @@ import {MdClose} from 'react-icons/md';
 
 
 export default function Navbar() {
+  const isLoggedIn = sessionStorage.getItem("accessToken");
   const [anchorEl, setAnchorEl] = useState(null);
   const [navState,setNavState] = useState(false);
   const html = document.querySelector("html");
@@ -57,8 +58,22 @@ export default function Navbar() {
               <Link to ='/contact'>Contact</Link>
               </li>
               <li>
-                
-              <Link to ='/login'>Connexion</Link>
+              {isLoggedIn ? (
+                <Link to ='/' 
+                  onClick={() => { 
+                    sessionStorage.removeItem("accessToken");
+                    sessionStorage.removeItem("name");
+                    sessionStorage.removeItem("surname");
+                    sessionStorage.removeItem("userId"); // useerId ?
+                    sessionStorage.removeItem("role"); // useerId ?
+                    navigate('/login')
+                    }}
+                >Déconnexion</Link>
+                ) : (
+                  <Link to ='/login'>Connexion</Link>
+                )}
+    
+              
               
               </li>
             </ul>
