@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import { useNavigate } from "react-router-dom";
 
 function Hotel() {
+  const role = sessionStorage.getItem( "role")
   let {id} = useParams();
   let navigate = useNavigate();
   const [hotelObject, setHotelObject] = useState({});
@@ -120,6 +121,7 @@ function Hotel() {
         </div>
       </div>
     </div>
+    {role == 'owner' && 
     <div className="allForms-container">
       <div className="allForms mx-3 py-3">
         <div className="content">
@@ -143,9 +145,11 @@ function Hotel() {
             <input type="text" onChange={(e)=>{setNewBookingLink(e.target.value)}} />
             <button onClick={addRoom}>Ajouter</button>
           </form>
+         
         </div>
       </div>
     </div>
+     }
    </>
   )
 }
