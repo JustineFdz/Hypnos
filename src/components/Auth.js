@@ -6,7 +6,7 @@ export default function Auth() {
   const [role, setRole] = useState('');
 
   useEffect(() =>{
-    axios.get("http://hypnos-booking-backend.herokuapp.com/auth/login").then((response) =>{
+    axios.get("https://hypnos-booking-backend.herokuapp.com/auth/login").then((response) =>{
       if(response.data.loggedIn ==true) {
         setRole(response.data.user[0].role)
       }

@@ -11,7 +11,7 @@ export const RoomBooking = () => {
   
 
   useEffect(() => {
-    const { data } = axios.get(`http://hypnos-booking-backend.herokuapp.com/rooms/${id}`);
+    const { data } = axios.get(`https://hypnos-booking-backend.herokuapp.com/rooms/${id}`);
     setRoomData(data);
   },[]);
   console.log('>>>>>>>>>>>>', {roomData})  

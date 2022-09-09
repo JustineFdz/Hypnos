@@ -16,11 +16,11 @@ export default function Room() {
   const [endDate,setEndDate]=useState('');
 
   useEffect(() => {
-    axios.get(`http://hypnos-booking-backend.herokuapp.com/hotels/${hotelId}/room/${roomId}`).then((response) => {
+    axios.get(`https://hypnos-booking-backend.herokuapp.com/hotels/${hotelId}/room/${roomId}`).then((response) => {
       setRoom(response.data);
     });
 
-    axios.get(`http://hypnos-booking-backend.herokuapp.com/hotels/${hotelId}/bookings/${roomId}`).then((response) => {
+    axios.get(`https://hypnos-booking-backend.herokuapp.com/hotels/${hotelId}/bookings/${roomId}`).then((response) => {
       setCheckIn(response.data);
       setCheckOut(response.data);
       
@@ -28,7 +28,7 @@ export default function Room() {
   },[]);
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post(`http://hypnos-booking-backend.herokuapp.com/${hotelId}bookings/${roomId}`, {
+    axios.post(`https://hypnos-booking-backend.herokuapp.com/${hotelId}bookings/${roomId}`, {
       checkIn: startDate, 
       checkOut: endDate,
       userId: sessionStorage.getItem("userId")

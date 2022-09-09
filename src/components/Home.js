@@ -30,7 +30,7 @@ export const Home = () => {
             {isLoggedIn ? (
                   <div>
                     {/* <div className='hello'>Bonjour {`${name} ${surname}`}</div> */}
-                    <div className='hello'>Bonjour {`${name} ${surname} ${role}`}</div>
+                    <div className='hello'>Bonjour {`${name} ${surname}`}</div>
                     <div>
                      <a onClick={() => {  navigate('/account')}}> Mes reservations</a>
                     </div>
