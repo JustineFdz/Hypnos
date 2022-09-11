@@ -14,14 +14,14 @@ export const Booking = () => {
   const [selectedSuite, setSelectedSuite] = useState(null);
 
   useEffect(() => {
-    axios.get("https://hypnos-booking-backend.herokuapp.com/hotels").then((response) => {
+    axios.get("http://localhost:3001/hotels").then((response) => {
       setListOfHotels(response.data); 
     });
   }, []);
   
   useEffect(() => {
     if (selectedHotel) {
-      axios.get(`https://hypnos-booking-backend.herokuapp.com/rooms/${selectedHotel}`).then((response) => {
+      axios.get(`http://localhost:3001/rooms/${selectedHotel}`).then((response) => {
       setListOfRooms(response.data); 
     });
     }
@@ -29,7 +29,7 @@ export const Booking = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post(`https://hypnos-booking-backend.herokuapp.com/bookings/hotel/${selectedHotel}/room/${selectedSuite}`, {
+    axios.post(`http://localhost:3001/bookings/hotel/${selectedHotel}/room/${selectedSuite}`, {
       checkIn: startDate, 
       checkOut: endDate,
       userId: sessionStorage.getItem("userId")
@@ -39,7 +39,7 @@ export const Booking = () => {
   }
 
   const onSubmit = (data) => {
-    axios.post("https://hypnos-booking-backend.herokuapp.com/auth", data).then(() => {
+    axios.post("http://localhost:3001/auth", data).then(() => {
       console.log(data);
       navigate("/account");
       // ensuite renvoyer réservation si le user arrive d'une page booking

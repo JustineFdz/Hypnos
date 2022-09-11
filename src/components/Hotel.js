@@ -25,12 +25,12 @@ function Hotel() {
   
 
   useEffect(() => {
-    axios.get(`https://hypnos-booking-backend.herokuapp.com/hotels/byId/${id}`).then((response) => {
+    axios.get(`http://localhost:3001/hotels/byId/${id}`).then((response) => {
       // setListOfHotel(response.data);
       setHotelObject(response.data);
     });
 
-    axios.get(`https://hypnos-booking-backend.herokuapp.com/rooms/${id}`).then((response) => {
+    axios.get(`http://localhost:3001/rooms/${id}`).then((response) => {
       // setListOfHotel(response.data);
       setRooms(response.data);
       setNewTitle(response.data);
@@ -51,7 +51,7 @@ function Hotel() {
   //(newTitle,newDescription,newCoverPicture,newPrice,newBookingLink)
   const addRoom = () =>{
     axios
-    .post("https://hypnos-booking-backend.herokuapp.com/rooms", {
+    .post("http://localhost:3001/rooms", {
       title:newTitle,
       description:newDescription,
       coverPicture:newCoverPicture,

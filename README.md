@@ -77,7 +77,7 @@ cd hypnos-react-app
 npm install
 Set your environment variables:
 
-"https://hypnos-booking-backend.herokuapp.com/"
+"http://localhost:3001/"
 
 Then run the following command to start the client:
 
