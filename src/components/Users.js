@@ -16,12 +16,12 @@ function Users() {
 
 
   useEffect(() => {
-    axios.get("http://localhost:3001/users/").then((response) => {
+    axios.get("http://hypnos-booking-backend.herokuapp.com/users/").then((response) => {
       // setListOfHotel(response.data);
       setUsersObject(response.data);
     });
 
-    axios.get("http://localhost:3001/users").then((response) => {
+    axios.get("http://hypnos-booking-backend.herokuapp.com/users").then((response) => {
       setUsers(response.data);
       setNewName(response.data);
       setNewSurname(response.data);
@@ -34,7 +34,7 @@ function Users() {
 
   const addUser = () =>{
     axios
-    .post("http://localhost:3001/users", {
+    .post("http://hypnos-booking-backend.herokuapp.com/users", {
       name:newName,
       surname:newSurname,
       mail:newMail,

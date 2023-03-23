@@ -14,7 +14,7 @@ export const Account = () => {
   // const [listOfRooms, setListOfRooms] = useState([]);
 
   // useEffect(() => {
-  //   axios.get(`http://localhost:3001/hotels/byId/${id}`).then((response) => {
+  //   axios.get(`http://hypnos-booking-backend.herokuapp.com/hotels/byId/${id}`).then((response) => {
   //     // setListOfHotel(response.data);
   //     setHotelObject(response.data);
   //   });
@@ -29,7 +29,7 @@ export const Account = () => {
     //  debugger
     if (isLoggedIn) {
       axios
-        .get(`http://localhost:3001/bookings/user/${userId}`)
+        .get(`http://hypnos-booking-backend.herokuapp.com/bookings/user/${userId}`)
         .then((response) => {
           console.log('>>>>>>>>>> booking Date',response.data)
           setListOfBookings(response.data);
