@@ -32,8 +32,9 @@ function Registration() {
   const onSubmit = (data) => {
     axios.post("http://localhost:3001/auth", data).then(() => {
       console.log(data);
-      navigate("/login");
-      // history.back? depuis login? renvoyer réservation si le user arrive d'une page booking
+      // navigate("/login");
+      history.back();
+      // depuis login? renvoyer réservation si le user arrive d'une page booking
     });
   };  
 

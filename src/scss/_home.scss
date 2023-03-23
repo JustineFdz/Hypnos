@@ -52,7 +52,7 @@
     gap:2rem;
     .hotels{
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(3,1fr);      
       gap: 2rem;
       .hotel {
         background-color: var(--card-color2);
@@ -114,7 +114,7 @@
       margin: auto;
     }
     .hotels {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr 1fr;
      .room-content{
        img{
          width: 20rem;
@@ -123,12 +123,17 @@
      }
     }
   }
+  .hotel-container, .home-container, .room{
+    .container{
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 }
 @media screen and (min-device-width: 1200px) {
   .container {
     .container {
       .hotels {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr 1fr;
        .room-content{
          img{
            width: 20rem;
@@ -138,5 +143,10 @@
       }
     }
   }
+.hotel-container, .home-container, .room{
+  .container{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 }
 }

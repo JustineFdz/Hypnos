@@ -55,4 +55,4 @@ function Hotels() {
   )
 }
 
-export default Hotels
+export default Hotels;

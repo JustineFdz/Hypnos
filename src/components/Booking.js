@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from './Navbar';
+import { useNavigate } from "react-router-dom";
+
 //import {useParams} from 'react-router-dom';
 
 export const Booking = () => {
+  let navigate = useNavigate();
   //let {hotelId} = useParams();
   const [startDate,setStartDate]=useState('');
   const [endDate,setEndDate]=useState('');
@@ -35,6 +38,7 @@ export const Booking = () => {
       userId: sessionStorage.getItem("userId")
     }).then((response) => {
       console.log('>>>>>>>>>>>>>> booking call returned', response.data) 
+      navigate("/account")
     });
   }
 
